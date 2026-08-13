@@ -578,7 +578,7 @@ public class ClassFileDeserializer {
         for (int i=0; i<count; i++) {
             int nameIndex = reader.readUnsignedShort();
 
-            String name = constants.getConstantUtf8(nameIndex);
+            String name = (nameIndex == 0) ? null : constants.getConstantUtf8(nameIndex);
 
             parameters[i] = new MethodParameter(name, reader.readUnsignedShort());
         }
